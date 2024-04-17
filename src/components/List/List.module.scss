@@ -1,27 +1,58 @@
 .root {
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.29);
+  background: white;
+
   * {
-    font-size: 28px;
+    font-size: 35px;
   }
+
+  .add {
+    display: flex;
+    padding: 5px;
+    background: #f8f8f8;
+
+    button {
+      img {
+        height: 35px;
+        margin-top: 5px;
+        display: inline
+      }
+      margin-right: 10px;
+    }
+
+    input {
+      font-style: italic;
+      width: 99%;
+      border: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
   }
 
   .footer {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid #ccc;
+    padding: 0 15px 0 15px;
 
-    button {
-      background: white;
-      border: 0;
-
-      &:hover {
-        cursor: pointer;
-      }
+    * {
+      font-size: 20px;
     }
 
     .filter {
+      margin: auto 0 auto 0;
       .selected {
-        border: 1px solid indianred;
+        border: 1px solid rgba(228, 141, 141, 0.85);
         border-radius: 5px;
       }
     }

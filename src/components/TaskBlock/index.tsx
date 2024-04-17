@@ -12,7 +12,7 @@ const TaskBlock: React.FC<TaskProps> = ({ id, text, status}) => {
       <button onClick={() => dispatch(changeStatus(id))}>
         <img className={status ? styles.unseeing : ''} src={done} alt='img'/>
       </button>
-      <span>{text}</span>
+      <span className={status ? '' : styles.done}>{text}</span>
     </div>
   )
 }

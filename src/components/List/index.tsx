@@ -4,14 +4,22 @@ import {RootState, useAppDispatch} from "../../redux/store";
 import {useSelector} from "react-redux";
 import {addItem, clearTasks} from "../../redux/slices/taskSlice";
 import TaskBlock from "../TaskBlock";
+import down from "../../assets/images/down.png";
 
 const List: React.FC = () => {
   const dispatch = useAppDispatch()
   const {allTasks} = useSelector((state: RootState) => state.tasks)
   const [newTask, setNewTask] = React.useState<string>()
   const [filter, setFilter] = React.useState<'All' | 'Active' | 'Completed'>('All')
+
   const onClickEnter = (key: string) => {
-    if(key === 'Enter' && newTask){
+    if(key === 'Enter'){
+      onClickAdd()
+    }
+  }
+
+  const onClickAdd = () => {
+    if (newTask) {
       dispatch(addItem(newTask));
       setNewTask('')
     }
@@ -31,12 +39,15 @@ const List: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <input
-        onKeyUp={(e) => onClickEnter(e.key)}
-        onChange={(e) => setNewTask(e.target.value)}
-        value={newTask}
-        className={styles.add}
-        placeholder='What needs to be done?'/>
+      <div className={styles.add}>
+        <button onClick={onClickAdd}><img src={down} alt='img'/></button>
+        <input
+          onKeyUp={(e) => onClickEnter(e.key)}
+          onChange={(e) => setNewTask(e.target.value)}
+          value={newTask}
+          className={styles.add}
+          placeholder='What needs to be done?'/>
+      </div>
       <ul>
         {allTasks && filtration().map((task, index) => <li key={index}><TaskBlock {...task}/></li>)}
       </ul>
@@ -44,11 +55,14 @@ const List: React.FC = () => {
         <p>{allTasks.filter(task => task.status).length} items left</p>
         <div className={styles.filter}>
           <button className={filter === 'All' ? styles.selected : ''}
-                  onClick={() => setFilter('All')}>All</button>
+                  onClick={() => setFilter('All')}>All
+          </button>
           <button className={filter === 'Active' ? styles.selected : ''}
-                  onClick={() => setFilter('Active')}>Active</button>
+                  onClick={() => setFilter('Active')}>Active
+          </button>
           <button className={filter === 'Completed' ? styles.selected : ''}
-                  onClick={() => setFilter('Completed')}>Completed</button>
+                  onClick={() => setFilter('Completed')}>Completed
+          </button>
         </div>
         <button onClick={() => dispatch(clearTasks())}>Clear completed</button>
       </div>
