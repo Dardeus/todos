@@ -1,0 +1,29 @@
+.root {
+  * {
+    font-size: 28px;
+  }
+  ul {
+    list-style-type: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background: white;
+      border: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .filter {
+      .selected {
+        border: 1px solid indianred;
+        border-radius: 5px;
+      }
+    }
+  }
+}

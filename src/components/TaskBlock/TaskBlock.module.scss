@@ -1,0 +1,24 @@
+.root {
+  span {
+    font-size: 42px;
+  }
+  button {
+    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    border: 1px solid gray;
+    background-color: white;
+
+    img {
+      height: 27px;
+      position: relative;
+      top: 2px;
+      left: -3px;
+    }
+
+    .unseeing {
+      display: none;
+    }
+  }
+}
